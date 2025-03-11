@@ -49,7 +49,7 @@ review_prompt_template = ChatPromptTemplate(
 
 # Initialize Mistral API-based model (ChatMistralAI)
 chat_model = ChatMistralAI(
-    model="mistral-medium",  # You can change to "mistral-medium" or "mistral-large"
+    model="mistral-small",  # You can change to "mistral-medium" or "mistral-large"
     temperature=0.7
 )
 
@@ -65,4 +65,7 @@ response = review_chain.invoke({"context": context, "question": question})
 formatted_response = response.content.split("\n")[-1]
 
 print(formatted_response)
+
+
+
 
