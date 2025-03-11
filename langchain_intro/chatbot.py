@@ -8,8 +8,9 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
     ChatPromptTemplate,
 )
-
+import os
 dotenv.load_dotenv()
+print(os.getenv("HF_TOKEN")) #testing if token is loaded 
 
 # Define your prompt template for patient reviews
 review_template_str = """Your job is to use patient
@@ -49,8 +50,9 @@ review_prompt_template = ChatPromptTemplate(
 
 # Initialize Mistral API-based model (ChatMistralAI)
 chat_model = ChatMistralAI(
-    model="mistral-medium",  # You can change to "mistral-medium" or "mistral-large"
-    temperature=0.7
+    model="mistral-small",  # You can change to "mistral-medium" or "mistral-large"
+    temperature=0.7,
+    hf_token=os.getenv("HF_TOKEN"),
 )
 
 # Chain the prompt template with the Mistral model
